@@ -23,7 +23,7 @@ function snapshot() {
     ctx.textAlign = "center";
     ctx.fillText(text, width/2, 550);
     // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
-    document.querySelector('#final').src = canvas.toDataURL('image/webp');
+    document.querySelector('#final').src = canvas.toDataURL('image/png');
     document.querySelector('#final').style.setProperty('display', 'block');
     document.querySelector('#wrapper').style.setProperty('display', 'none');
     take_pic.innerText = 'Take another Picture';

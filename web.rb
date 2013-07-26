@@ -17,10 +17,6 @@ post '/photo_booth' do
   haml :photo_booth, :locals => {:title => params[:title]}
 end
 
-get '/test' do
-  "Hello #{session[:name]} (#{session[:twitter]})."
-end
-
 get '/js/*.*' do
   send_file 'js/'+params[:splat].join('.')
 end
