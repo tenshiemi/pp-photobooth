@@ -152,6 +152,11 @@ input[type=submit]
   padding-top: 100px;
 }
 
+#photo_controls
+{
+  text-align: center;
+}
+
 /** Header and nav styles **/
 
 #header-wrapper
