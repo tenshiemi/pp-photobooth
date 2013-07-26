@@ -66,7 +66,7 @@ body
   border-radius: 1.6em;
 }
 
-#container 
+#container
 {
  width: 960px;
  margin:auto;
@@ -76,9 +76,8 @@ body
 
 a
 {
- color:#414141; 
+ color:#414141;
  text-decoration: none;
- border: solid;
 }
 
 h1
@@ -113,7 +112,7 @@ input[type=text]
   size:80;
 }
 
-input[type=submit]
+input[type=submit], .button
 {
   background-color: #ebebeb;
   color: #979797;
@@ -130,7 +129,7 @@ input[type=submit]
   padding-bottom: 10px;
 }
 
-#form_submit:hover {
+#form_submit:hover, .button:hover {
   background-color: #666;
   color: #ebebeb;
 }
@@ -153,7 +152,7 @@ input[type=submit]
   padding-top: 100px;
 }
 
-#photo_controls
+.center
 {
   text-align: center;
 }
@@ -165,6 +164,22 @@ input[type=submit]
   height:90px;
   padding:10px;
   margin:5px;
+}
+
+#wrapper
+{
+  width: 592px;
+  position: relative;
+  margin: 0 auto;
+}
+
+.pic_controls
+{
+  padding: 10px 0;
+}
+
+.pic_controls a {
+  padding: 0 10px;
 }
 
 /** Misc **/

@@ -55,7 +55,7 @@ function takePic() {
 take_pic.addEventListener('click', takePic);
 
 if (navigator.getUserMedia) {
-  take_pic.style.setProperty('display', 'block');
+  take_pic.style.removeProperty('display');
 
 // Not showing vendor prefixes or code that works cross-browser.
 navigator.getUserMedia({video: true}, function(stream) {
