@@ -7,6 +7,7 @@ var logo = document.querySelector('#logo');
 var take_pic = document.querySelector('#take_pic');
 var countdown = document.querySelector('#countdown');
 var poloroid = document.querySelector('#poloroid');
+var submit = document.querySelector('#submit');
 var ctx = canvas.getContext('2d');
 var localMediaStream = null;
 
@@ -28,11 +29,13 @@ function snapshot() {
     document.querySelector('#wrapper').style.setProperty('display', 'none');
     take_pic.innerText = 'Take another Picture';
     take_pic.style.setProperty('display', 'block');
+    submit.style.setProperty('display', 'block');
   }
 }
 
 function takePic() {
   countdown.style.setProperty('display', 'block');
+  submit.style.setProperty('display', 'none');
   document.querySelector('#wrapper').style.setProperty('display', 'block');
   document.querySelector('#final').style.setProperty('display', 'none');
   take_pic.style.setProperty('display', 'none');
