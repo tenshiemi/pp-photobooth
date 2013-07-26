@@ -15,3 +15,7 @@ end
 get '/images/*.*' do
   send_file 'images/'+params[:splat].join('.')
 end
+
+get '/css/*.*' do
+  send_file 'css/'+params[:splat].join('.')
+end

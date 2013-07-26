@@ -1,0 +1,165 @@
+/* == INDEX == */
+
+
+/* Cross Browser Compatability CSS */
+/**
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q { quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+input, select { vertical-align: middle; }
+
+/** Global **/
+
+body
+{
+  font-family:garamond;
+  color:#7a1026;
+}
+
+.page-content
+{
+  font-size:15px;
+  float:left;
+  width:100%;
+  background:#f8f8f8;
+  border-radius: 1.6em;
+}
+
+#container 
+{
+ width: 960px;
+ margin:auto;
+}
+
+/** Font and image styles **/
+
+a
+{
+ color:#414141; 
+ text-decoration: none;
+}
+
+h1
+{
+  font-size:60px;
+  text-align: center;
+}
+
+h2
+{
+  font-size:50px;
+}
+
+h3
+{
+  font-size:35px;
+}
+
+img
+{
+  margin:auto;
+}
+
+form
+{
+  font-size:35px;
+}
+
+input[type=text]
+{
+  height:22px;
+  size:80;
+}
+
+input[type=submit]
+{
+  background-color: #ebebeb;
+  color: #979797;
+  height: 30px;
+  width: 103px;
+  font-family: garamond;
+  color: #666;
+  text-transform:uppercase;
+}
+
+/** Content styles **/
+
+.form_field {
+  padding-bottom: 10px;
+}
+
+#form_submit:hover {
+  background-color: #666;
+  color: #ebebeb;
+}
+
+#hermes
+{
+  font-size:15px;
+  float:left;
+  width:40%;
+  margin:5px;
+  padding:10px;
+}
+
+#form_info
+{
+  font-size:15px;
+  float:right;
+  width:40%;
+  padding:10px;
+  padding-top: 100px;
+}
+
+/** Header and nav styles **/
+
+#header-wrapper
+{
+  height:90px;
+  padding:10px;
+  margin:5px;
+}
+
+/** Misc **/
+
