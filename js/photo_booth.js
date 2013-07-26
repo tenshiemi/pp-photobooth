@@ -28,13 +28,13 @@ function snapshot() {
     document.querySelector('#final').style.setProperty('display', 'block');
     document.querySelector('#wrapper').style.setProperty('display', 'none');
     take_pic.innerText = 'Take another Picture';
-    take_pic.style.setProperty('display', 'block');
-    submit.style.setProperty('display', 'block');
+    take_pic.style.removeProperty('display');
+    submit.style.removeProperty('display');
   }
 }
 
 function takePic() {
-  countdown.style.setProperty('display', 'block');
+  countdown.style.removeProperty('display');
   submit.style.setProperty('display', 'none');
   document.querySelector('#wrapper').style.setProperty('display', 'block');
   document.querySelector('#final').style.setProperty('display', 'none');
