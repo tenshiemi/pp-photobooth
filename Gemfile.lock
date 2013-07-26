@@ -1,12 +1,21 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     haml (3.1.8)
+    multi_json (1.7.7)
+    multipart-post (1.2.0)
     rack (1.5.2)
+    simple_oauth (0.2.0)
     sinatra (1.1.0)
       rack (~> 1.1)
       tilt (~> 1.1)
     tilt (1.4.1)
+    twitter (4.8.1)
+      faraday (~> 0.8, < 0.10)
+      multi_json (~> 1.0)
+      simple_oauth (~> 0.2)
 
 PLATFORMS
   ruby
@@ -14,3 +23,4 @@ PLATFORMS
 DEPENDENCIES
   haml
   sinatra (= 1.1.0)
+  twitter
