@@ -78,6 +78,7 @@ a
 {
  color:#414141; 
  text-decoration: none;
+ border: solid;
 }
 
 h1
@@ -150,6 +151,11 @@ input[type=submit]
   width:40%;
   padding:10px;
   padding-top: 100px;
+}
+
+#photo_controls
+{
+  text-align: center;
 }
 
 /** Header and nav styles **/
