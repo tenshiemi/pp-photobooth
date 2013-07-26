@@ -27,7 +27,7 @@ function snapshot() {
     document.querySelector('#final').src = canvas.toDataURL('image/png');
     document.querySelector('#final').style.setProperty('display', 'block');
     document.querySelector('#wrapper').style.setProperty('display', 'none');
-    take_pic.innerText = 'Take another Picture';
+    take_pic.innerText = 'Retake Photo';
     take_pic.style.removeProperty('display');
     submit.style.removeProperty('display');
   }
