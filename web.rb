@@ -26,7 +26,7 @@ get '/save' do
     config.oauth_token_secret = 'Ga6hOEra4iW4JgSF6wBI5kot7BFp898Yggg1IcvATjQ'
   end
 
-  Twitter.update("Welcome to Paperless Post, #{session[:name]} #{session[:twitter]}");
+  Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]}");
   redirect '/'
 end
 
