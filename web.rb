@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'twitter'
 require 'aws-sdk'
+require 'base64'
 
 enable :sessions
 set :session_secret, 'pp secret session'
@@ -14,6 +15,7 @@ get '/photo_booth' do
 end
 
 post '/photo_booth' do
+  redirect '/' if params[:name].empty?
   session[:name] = params[:name]
   session[:twitter] = params[:twitter]
   haml :photo_booth, :locals => {:title => params[:title]}
@@ -26,20 +28,17 @@ post '/save' do
     config.oauth_token = '1623270049-T1n1RgSdYd5XvHPAynt0naAbKSWaVW2pQdt64PJ'
     config.oauth_token_secret = 'Ga6hOEra4iW4JgSF6wBI5kot7BFp898Yggg1IcvATjQ'
   end
-  s3 = AWS::S3.new(
-    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
-    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
-  )
-  bucket = s3.buckets[ENV['S3_BUCKET_NAME']]
 
-  filename = session[:name] + DateTime.now.strftime('%Y%m%dT%H%M') + '.png'
+  logger.info ENV['S3_BUCKET_NAME']
+  logger.info ENV['AWS_ACCESS_KEY_ID']
+  logger.info ENV['AWS_SECRET_ACCESS_KEY']
 
-  image_data = params[:base64]
-  obj = bucket.objects.create(filename, image_data)
-  Base64.decode64(image_data)
+  File.open(session[:name], 'wb') do|f|
+    f.write(Base64.decode64(params[:base64]))
+  end
 
-  Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]}");
-  obj.public_url.to_s
+  Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]}") unless session[:twitter].empty?
+  redirect '/'
 end
 
 get '/js/*.*' do
