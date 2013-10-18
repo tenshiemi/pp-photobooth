@@ -82,18 +82,18 @@ a
 
 h1
 {
-  font-size:60px;
+  font-size:50px;
   text-align: center;
 }
 
 h2
 {
-  font-size:50px;
+  font-size:40px;
 }
 
 h3
 {
-  font-size:35px;
+  font-size:30px;
 }
 
 img
@@ -103,7 +103,7 @@ img
 
 form
 {
-  font-size:35px;
+  font-size:30px;
 }
 
 input[type=text]
