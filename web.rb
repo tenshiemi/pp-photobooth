@@ -2,6 +2,10 @@ require 'sinatra'
 require 'twitter'
 require 'aws-sdk'
 require 'base64'
+require 'logger'
+
+logger = Logger.new(STDOUT)
+logger.level = Logger::WARN
 
 enable :sessions
 set :session_secret, 'pp secret session'
@@ -33,12 +37,34 @@ post '/save' do
   logger.info ENV['AWS_ACCESS_KEY_ID']
   logger.info ENV['AWS_SECRET_ACCESS_KEY']
 
-  File.open(session[:name], 'wb') do|f|
-    f.write(Base64.decode64(params[:base64]))
-  end
+  s3 = AWS::S3.new(
+    :access_key_id => 'AKIAJCZJCPRZO5FDCUCA',
+    :secret_access_key => '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'
+  )
 
-  Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]}") unless session[:twitter].empty?
-  redirect '/'
+  bucket = s3.buckets['photobooth.s3.paperlesspost.net']
+
+  if bucket.exists?
+    data_url = params[:base64]
+    data_only = data_url[ /(?<=,).+/ ]
+
+    filename = session[:name]+'.png'
+
+    file = File.open(filename, 'wb')
+    file.write(Base64.decode64(data_only))
+    file.close
+    file = File.open(filename, 'rb')
+
+    obj = bucket.objects[filename]
+    obj.write(file)
+
+    url = obj.public_url.to_s
+
+    Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]} #{url}") unless session[:twitter].empty?
+    redirect '/'
+  else
+    return "An Error Occurred :("
+  end
 end
 
 get '/js/*.*' do
