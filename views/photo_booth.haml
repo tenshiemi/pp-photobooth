@@ -5,7 +5,7 @@
   %body#container
     .center.pic_controls
       %form{:action => '/save', :method => 'POST'}
-        %input#submit.button{:style => "font-size: 28px; display:none;", :type=>'submit', :name=>'Save Photo'}
+        %button#submit.button{:style => "font-size: 28px; display:none;", :type=>'submit'}Save Photo
         %input#img-data{:type => 'hidden', :name => 'base64'}
       %a#take_pic.button{:href => '#', :style => "font-size: 28px; display:none;"} Take Photo
       %span#countdown{:style => "font-size: 28px; display:none;"} 3
