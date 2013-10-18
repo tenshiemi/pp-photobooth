@@ -39,7 +39,7 @@ post '/save' do
   Base64.decode64(image_data)
 
   Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]}");
-  puts obj.public_url
+  obj.public_url
 end
 
 get '/js/*.*' do
