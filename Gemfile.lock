@@ -1,9 +1,14 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aws (2.9.1)
+      http_connection
+      uuidtools
+      xml-simple
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
     haml (3.1.8)
+    http_connection (1.4.4)
     multi_json (1.7.7)
     multipart-post (1.2.0)
     rack (1.5.2)
@@ -16,11 +21,14 @@ GEM
       faraday (~> 0.8, < 0.10)
       multi_json (~> 1.0)
       simple_oauth (~> 0.2)
+    uuidtools (2.1.4)
+    xml-simple (1.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws
   haml
   sinatra (= 1.1.0)
   twitter
