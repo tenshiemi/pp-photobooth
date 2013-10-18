@@ -53,7 +53,7 @@ input, select { vertical-align: middle; }
 
 body
 {
-  font-family:garamond;
+  font-family:arial;
   color:#7a1026;
 }
 
@@ -118,7 +118,7 @@ input[type=submit], .button
   color: #979797;
   height: 30px;
   width: 103px;
-  font-family: garamond;
+  font-family: arial;
   color: #666;
   text-transform:uppercase;
 }
