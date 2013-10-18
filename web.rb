@@ -26,11 +26,20 @@ post '/save' do
     config.oauth_token = '1623270049-T1n1RgSdYd5XvHPAynt0naAbKSWaVW2pQdt64PJ'
     config.oauth_token_secret = 'Ga6hOEra4iW4JgSF6wBI5kot7BFp898Yggg1IcvATjQ'
   end
+  AWS::S3::Base.establish_connection!(
+    :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+  )
+  bucket = ENV['S3_BUCKET_NAME']
+
+  filename = session[:name] + DateTime.now.strftime('%Y%m%dT%H%M') + '.png'
 
   image_data = params[:base64]
+  url = S3Object.store(filename, image_data, bucket).url
+  Base64.decode64(image_data)
 
   Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]}");
-  redirect '/'
+  puts url
 end
 
 get '/js/*.*' do
