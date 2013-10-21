@@ -27,6 +27,7 @@ post '/photo_booth' do
   redirect '/' if params[:name].empty?
   session[:name] = params[:name]
   session[:twitter] = params[:twitter]
+  session[:title] = params[:title]
   haml :photo_booth, :locals => {:title => params[:title]}
 end
 
@@ -45,7 +46,7 @@ post '/save' do
     data_url = params[:base64]
     data_only = data_url[ /(?<=,).+/ ]
 
-    now = DateTime.now.strftime('%Y%m%dT%H%M')
+    now = DateTime.now.strftime('%Y%m%dT%H%M%S')
     filename = session[:name] + now + '.png'
 
     file = File.open(filename, 'wb')
@@ -58,7 +59,11 @@ post '/save' do
 
     url = obj.public_url.to_s
 
+<<<<<<< HEAD
     tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : session[:twitter]) + " #{url}"
+=======
+    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : '@'+session[:twitter]) + " #{session[:title]} #{url}"
+>>>>>>> b6c58440820863f34e9796465ecfa42935982798
     Twitter.update(tweet)
     redirect '/'
   else
