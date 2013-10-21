@@ -4,7 +4,9 @@
     %link{:rel => "stylesheet", :href => "css/style.css"}
   %body#container
     .center.pic_controls
-      %a#submit.button{:href => '/save', :style => "font-size: 28px; display:none;"} Save Photo
+      %form{:action => '/save', :method => 'POST', :style=>'display: inline;'}
+        %button#submit.button{:style => "font-size: 28px; display:none; border: none;", :type=>'submit'}Save Photo
+        %input#img-data{:type => 'hidden', :name => 'base64'}
       %a#take_pic.button{:href => '#', :style => "font-size: 28px; display:none;"} Take Photo
       %span#countdown{:style => "font-size: 28px; display:none;"} 3
     #wrapper
