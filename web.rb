@@ -46,7 +46,7 @@ post '/save' do
     data_url = params[:base64]
     data_only = data_url[ /(?<=,).+/ ]
 
-    now = DateTime.now.strftime('%Y%m%dT%H%M')
+    now = DateTime.now.strftime('%Y%m%dT%H%M%S')
     filename = session[:name] + now + '.png'
 
     file = File.open(filename, 'wb')
