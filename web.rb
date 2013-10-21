@@ -7,6 +7,11 @@ require 'logger'
 logger = Logger.new(STDOUT)
 logger.level = Logger::WARN
 
+s3 = AWS::S3.new(
+  :access_key_id => 'AKIAJCZJCPRZO5FDCUCA',
+  :secret_access_key => '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'
+)
+
 enable :sessions
 set :session_secret, 'pp secret session'
 
@@ -33,14 +38,6 @@ post '/save' do
     config.oauth_token_secret = 'Ga6hOEra4iW4JgSF6wBI5kot7BFp898Yggg1IcvATjQ'
   end
 
-  logger.info ENV['S3_BUCKET_NAME']
-  logger.info ENV['AWS_ACCESS_KEY_ID']
-  logger.info ENV['AWS_SECRET_ACCESS_KEY']
-
-  s3 = AWS::S3.new(
-    :access_key_id => 'AKIAJCZJCPRZO5FDCUCA',
-    :secret_access_key => '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'
-  )
 
   bucket = s3.buckets['photobooth.s3.paperlesspost.net']
 
@@ -48,7 +45,7 @@ post '/save' do
     data_url = params[:base64]
     data_only = data_url[ /(?<=,).+/ ]
 
-    filename = session[:name]+'.png'
+    filename = session[:name]+DateTime.now.strftime("%Y%m%dT­%H%M")+'.png'
 
     file = File.open(filename, 'wb')
     file.write(Base64.decode64(data_only))
@@ -60,7 +57,8 @@ post '/save' do
 
     url = obj.public_url.to_s
 
-    Twitter.update("Welcome to Paperless Post, #{session[:name]} @#{session[:twitter]} #{url}") unless session[:twitter].empty?
+    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : session[:twitter]) + " #{url}"
+    Twitter.update(tweet)
     redirect '/'
   else
     return "An Error Occurred :("
