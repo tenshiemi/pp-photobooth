@@ -58,7 +58,7 @@ post '/save' do
 
     url = obj.public_url.to_s
 
-    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : session[:twitter]) + " #{url}"
+    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : '@'+session[:twitter]) + " #{url}"
     Twitter.update(tweet)
     redirect '/'
   else

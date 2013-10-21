@@ -58,10 +58,11 @@ take_pic.addEventListener('click', takePic);
 if (navigator.getUserMedia) {
   take_pic.style.removeProperty('display');
 
-// Not showing vendor prefixes or code that works cross-browser.
-navigator.getUserMedia({video: true}, function(stream) {
-  video.src = window.URL.createObjectURL(stream);
-  localMediaStream = stream;
-}, function(){ alert('failed')});} else {
+  // Not showing vendor prefixes or code that works cross-browser.
+  navigator.getUserMedia({video: true}, function(stream) {
+    video.src = window.URL.createObjectURL(stream);
+    localMediaStream = stream;
+  }, function(){ alert('failed')});
+} else {
   alert('not supported'); // fallback.
 }
