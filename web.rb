@@ -27,6 +27,7 @@ post '/photo_booth' do
   redirect '/' if params[:name].empty?
   session[:name] = params[:name]
   session[:twitter] = params[:twitter]
+  session[:title] = params[:title]
   haml :photo_booth, :locals => {:title => params[:title]}
 end
 
@@ -58,7 +59,7 @@ post '/save' do
 
     url = obj.public_url.to_s
 
-    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : '@'+session[:twitter]) + " #{url}"
+    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : '@'+session[:twitter]) + " #{params[:title]} #{url}"
     Twitter.update(tweet)
     redirect '/'
   else
