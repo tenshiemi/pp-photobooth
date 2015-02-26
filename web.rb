@@ -3,7 +3,6 @@ require 'twitter'
 require 'aws-sdk'
 require 'base64'
 require 'logger'
-require "sinatra/config_file"
 
 logger = Logger.new(STDOUT)
 logger.level = Logger::WARN
