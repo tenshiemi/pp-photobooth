@@ -5,8 +5,6 @@ require 'base64'
 require 'logger'
 require "sinatra/config_file"
 
-# config_file 'config.yml'
-
 logger = Logger.new(STDOUT)
 logger.level = Logger::WARN
 
