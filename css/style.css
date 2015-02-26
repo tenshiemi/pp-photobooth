@@ -54,7 +54,8 @@ input, select { vertical-align: middle; }
 body
 {
   font-family:arial;
-  color:#7a1026;
+  color: white;
+  background-color: #15637a;
 }
 
 .page-content
@@ -62,8 +63,6 @@ body
   font-size:15px;
   float:left;
   width:100%;
-  background:#f8f8f8;
-  border-radius: 1.6em;
 }
 
 #container
@@ -125,6 +124,15 @@ input[type=submit], .button
 
 /** Content styles **/
 
+h1#title
+{
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 30px;
+  vertical-align: middle;
+  margin: auto;
+}
+
 .form_field {
   padding-bottom: 10px;
 }
@@ -141,6 +149,11 @@ input[type=submit], .button
   width:40%;
   margin:5px;
   padding:10px;
+  transform: scaleX(-1);
+}
+
+img#logo {
+  vertical-align: -20px;
 }
 
 #form_info

@@ -1,17 +1,16 @@
 %html
   %head
-    %title Paperless Photobooth
+    %title Apportable Photobooth
     %link{:rel => "stylesheet", :href => "css/style.css"}
   %body#container
     %header
       #header-wrapper
-        %h1
-          Welcome to the
-          %img{:src => "images/logo.png", :style => "display:inline-block"}
-          photo booth
+        %h1#title
+          Welcome to
+          %img#logo{:src => "images/logo.png", :style => "display:inline-block"}
     .page-content
       #hermes
-        %img{ :src => "images/hermes.png", :style => "width:490px;"}
+        %img{ :src => "images/fairy.svg", :style => "width:490px;"}
       #form_info
         %h2{:style => "padding-bottom:40px"} Fill in your deets and mug for the camera!
         %form{:action => 'photo_booth', :method => 'POST'}

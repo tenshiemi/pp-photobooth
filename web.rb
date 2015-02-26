@@ -3,13 +3,17 @@ require 'twitter'
 require 'aws-sdk'
 require 'base64'
 require 'logger'
+require "sinatra/config_file"
+
+config_file 'config.yml'
 
 logger = Logger.new(STDOUT)
 logger.level = Logger::WARN
 
 s3 = AWS::S3.new(
-  :access_key_id => '',
-  :secret_access_key => ''
+  :access_key_id => AWS_KEY,
+  :secret_access_key => AWS_SECRET,
+  :region => 'us-east-1'
 )
 
 enable :sessions
@@ -33,14 +37,14 @@ end
 
 post '/save' do
   Twitter.configure do |config|
-    config.consumer_key = ''
-    config.consumer_secret = ''
-    config.oauth_token = ''
-    config.oauth_token_secret = ''
+    config.consumer_key = TWITTER_CONSUMER_KEY
+    config.consumer_secret = TWITTER_CONSUMER_SECRET
+    config.oauth_token = OAUTH_CONSUMER_KEY
+    config.oauth_token_secret = OAUTH_CONSUMER_SECRET
   end
 
 
-  bucket = s3.buckets['photobooth.s3.paperlesspost.net']
+  bucket = s3.buckets['apportable-photobooth']
 
   if bucket.exists?
     data_url = params[:base64]
@@ -59,11 +63,7 @@ post '/save' do
 
     url = obj.public_url.to_s
 
-<<<<<<< HEAD
-    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : session[:twitter]) + " #{url}"
-=======
-    tweet = "Welcome to Paperless Post, #{session[:name]} " + (session[:twitter].empty? ? '' : '@'+session[:twitter]) + " #{session[:title]} #{url}"
->>>>>>> b6c58440820863f34e9796465ecfa42935982798
+    tweet = "Welcome to Apportable, #{session[:name]} " + (session[:twitter].empty? ? '' : '@'+session[:twitter]) + " #{session[:title]} #{url}"
     Twitter.update(tweet)
     redirect '/'
   else
