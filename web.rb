@@ -3,16 +3,13 @@ require 'twitter'
 require 'aws-sdk'
 require 'base64'
 require 'logger'
-require "sinatra/config_file"
-
-config_file 'config.yml'
 
 logger = Logger.new(STDOUT)
 logger.level = Logger::WARN
 
 s3 = AWS::S3.new(
-  :access_key_id => AWS_KEY,
-  :secret_access_key => AWS_SECRET,
+  :access_key_id => ENV['S3_KEY'],
+  :secret_access_key => ENV['S3_SECRET'],
   :region => 'us-east-1'
 )
 
@@ -37,10 +34,10 @@ end
 
 post '/save' do
   Twitter.configure do |config|
-    config.consumer_key = TWITTER_CONSUMER_KEY
-    config.consumer_secret = TWITTER_CONSUMER_SECRET
-    config.oauth_token = OAUTH_CONSUMER_KEY
-    config.oauth_token_secret = OAUTH_CONSUMER_SECRET
+    config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+    config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+    config.oauth_token = ENV['OAUTH_CONSUMER_KEY']
+    config.oauth_token_secret = ENV['OAUTH_CONSUMER_SECRET']
   end
 
 
