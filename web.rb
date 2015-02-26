@@ -11,8 +11,8 @@ logger = Logger.new(STDOUT)
 logger.level = Logger::WARN
 
 s3 = AWS::S3.new(
-  :access_key_id => AWS_KEY,
-  :secret_access_key => AWS_SECRET,
+  :access_key_id => ENV[S3_KEY],
+  :secret_access_key => ENV[S3_SECRET],
   :region => 'us-east-1'
 )
 
