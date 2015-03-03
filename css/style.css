@@ -107,30 +107,32 @@ form
 
 input[type=text]
 {
-  height:22px;
-  size:80;
+  height:30px;
+  font-size: 16px;
 }
 
 input[type=submit], .button
 {
-  background-color: #ebebeb;
+  background-color: #fff;
   color: #979797;
-  height: 30px;
+  height: 40px;
   width: 203px;
   font-family: arial;
   color: #666;
-  text-transform:uppercase;
+  border: none;
+  font-size: 16px;
 }
 
 /** Content styles **/
 
 h1#title
 {
+  text-align: center;
+}
+
+h2 {
   display: inline-block;
-  text-transform: uppercase;
-  margin-right: 30px;
   vertical-align: middle;
-  margin: auto;
 }
 
 .form_field {
@@ -138,11 +140,11 @@ h1#title
 }
 
 #form_submit:hover, .button:hover {
-  background-color: #666;
-  color: #ebebeb;
+  background-color: rgb(149, 156, 160);
+  color: #fff;
 }
 
-#hermes
+#large-fairy
 {
   font-size:15px;
   float:left;
@@ -194,6 +196,20 @@ img#logo {
 .pic_controls a {
   padding: 0 10px;
 }
+
+/*.take-pic-button {
+  display: block;
+  background-color: #fff;
+  height: 40px;
+  width: 203px;
+  margin: auto;
+}
+
+#take-pic {
+  color: #979797;
+  display: block;
+  font-size: 16px;
+}*/
 
 /** Misc **/
 
